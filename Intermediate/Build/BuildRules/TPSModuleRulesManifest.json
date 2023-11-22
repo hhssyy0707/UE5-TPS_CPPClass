@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\UE5_Projects\\TPS\\Source\\TPS\\TPS.Build.cs",
+		"C:\\UE5_Projects\\TPS\\Source\\TPS.Target.cs",
+		"C:\\UE5_Projects\\TPS\\Source\\TPSEditor.Target.cs"
+	],
+	"EngineVersion": "5.3.2"
+}
