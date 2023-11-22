@@ -6,6 +6,10 @@
 
 #include "EnemyAnim.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/WidgetComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -32,6 +36,25 @@ AEnemy::AEnemy()
 
 	//이동하는 방향으로 쳐다보기
 	GetCharacterMovement()->bOrientRotationToMovement = true;
+
+
+	HPComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPComp"));
+	HPComp->SetupAttachment(RootComponent);
+	ConstructorHelpers::FClassFinder<UUserWidget> tempHP(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/Blueprints/WBP_EnemyHPWidget.WBP_EnemyHPWidget_C'"));
+
+	if ( tempHP.Succeeded() ) {
+		HPComp->SetWidgetClass(tempHP.Class);
+		HPComp->SetDrawSize(FVector2D(150,20));
+		HPComp->SetRelativeLocation(FVector(0,0,90));
+		HPComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+
+	UCapsuleComponent* cap = GetCapsuleComponent();
+	auto mesh = GetMesh();
+	cap->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+	cap->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	mesh->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
+	mesh->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 }
 
 // Called when the game starts or when spawned
@@ -46,6 +69,19 @@ void AEnemy::BeginPlay()
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	FVector Start;
+	FVector Target;
+
+	Start = HPComp->GetComponentLocation();
+	APlayerCameraManager* Camera = GetWorld()->GetFirstPlayerController()->PlayerCameraManager;
+	Target = Camera->GetCameraLocation();
+
+	//Target = UGameplayStatics::GetPlayerCameraManager(GetWorld(),0)->GetCameraLocation();
+	//Target = UGameplayStatics::GetPlayerCharacter(GetWorld(),0)->GetActorLocation();
+	
+	auto rotation = UKismetMathLibrary::FindLookAtRotation(Start, Target);
+	HPComp->SetWorldRotation(rotation);
 
 }
 

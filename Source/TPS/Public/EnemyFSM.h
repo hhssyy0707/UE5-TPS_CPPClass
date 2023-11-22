@@ -51,7 +51,10 @@ public:
 	float AttackDistance = 300;
 
 	UPROPERTY(VisibleAnywhere)
-	int32 HP = 5;
+	int32 HP;
+	
+	UPROPERTY(VisibleAnywhere)
+	int32 MaxHP = 5;
 
 	FVector DieEndLoc;
 
@@ -100,4 +103,6 @@ public:
 
 	// & : 값을 넣어주기 위함
 	bool UpdateRandomLocation(FVector Origin, float Radius, FVector& OutLocation);
+
+	void UpdateHP(float NewHP);
 };

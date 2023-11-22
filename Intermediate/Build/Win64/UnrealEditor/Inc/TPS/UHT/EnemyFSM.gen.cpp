@@ -120,6 +120,10 @@ void EmptyLinkFunctionForGeneratedCodeEnemyFSM() {}
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_HP;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MaxHP_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_MaxHP;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_DamageTime_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_DamageTime;
@@ -200,6 +204,13 @@ void EmptyLinkFunctionForGeneratedCodeEnemyFSM() {}
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UEnemyFSM_Statics::NewProp_HP = { "HP", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UEnemyFSM, HP), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UEnemyFSM_Statics::NewProp_HP_MetaData), Z_Construct_UClass_UEnemyFSM_Statics::NewProp_HP_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UEnemyFSM_Statics::NewProp_MaxHP_MetaData[] = {
+		{ "Category", "EnemyFSM" },
+		{ "ModuleRelativePath", "Public/EnemyFSM.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UEnemyFSM_Statics::NewProp_MaxHP = { "MaxHP", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UEnemyFSM, MaxHP), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UEnemyFSM_Statics::NewProp_MaxHP_MetaData), Z_Construct_UClass_UEnemyFSM_Statics::NewProp_MaxHP_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UEnemyFSM_Statics::NewProp_DamageTime_MetaData[] = {
 		{ "Category", "EnemyFSM" },
 		{ "ModuleRelativePath", "Public/EnemyFSM.h" },
@@ -258,6 +269,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemyFSM() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_Target,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_AttackDistance,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_HP,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_MaxHP,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_DamageTime,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_DieTime,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UEnemyFSM_Statics::NewProp_AttackTime,
@@ -307,9 +319,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemyFSM() {}
 		{ EEnemyState_StaticEnum, TEXT("EEnemyState"), &Z_Registration_Info_UEnum_EEnemyState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4121853980U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UEnemyFSM, UEnemyFSM::StaticClass, TEXT("UEnemyFSM"), &Z_Registration_Info_UClass_UEnemyFSM, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UEnemyFSM), 2941403126U) },
+		{ Z_Construct_UClass_UEnemyFSM, UEnemyFSM::StaticClass, TEXT("UEnemyFSM"), &Z_Registration_Info_UClass_UEnemyFSM, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UEnemyFSM), 2016038345U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_891528882(TEXT("/Script/TPS"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_3029067840(TEXT("/Script/TPS"),
 		Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyFSM_h_Statics::EnumInfo));
