@@ -312,7 +312,10 @@ bool UEnemyFSM::UpdateRandomLocation(FVector Origin, float Radius, FVector& OutL
 		OutLocation = loc.Location;
 		return true;
 	}
-	return UpdateRandomLocation(Origin, Radius, OutLocation);
+	return false;
+
+	//에너미 스폰시 무한반복됨
+	//return UpdateRandomLocation(Origin, Radius, OutLocation);
 	
 }
 
@@ -324,4 +327,5 @@ void UEnemyFSM::UpdateHP(float NewHP)
 
 	HP = FMath::Max(0,HP+=NewHP);
 
+	Me->DoDamageUpdateUI(HP,MaxHP);
 }
