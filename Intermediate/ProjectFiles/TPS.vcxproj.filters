@@ -54,6 +54,15 @@
     <ClCompile Include="..\..\Source\TPS\Private\EnemySpawn.cpp">
       <Filter>Source\TPS\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerBaseComp.cpp">
+      <Filter>Source\TPS\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerFireComp.cpp">
+      <Filter>Source\TPS\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerMoveComp.cpp">
+      <Filter>Source\TPS\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TPS\Private\SpawnManager.cpp">
       <Filter>Source\TPS\Private</Filter>
     </ClCompile>
@@ -85,6 +94,15 @@
       <Filter>Source\TPS\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\TPS\Public\EnemySpawn.h">
+      <Filter>Source\TPS\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerBaseComp.h">
+      <Filter>Source\TPS\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerFireComp.h">
+      <Filter>Source\TPS\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerMoveComp.h">
       <Filter>Source\TPS\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\TPS\Public\SpawnManager.h">

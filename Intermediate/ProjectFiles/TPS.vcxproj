@@ -143,6 +143,21 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerBaseComp.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerFireComp.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TPS\Private\PlayerMoveComp.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TPS\Private\SpawnManager.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -173,6 +188,9 @@
     <ClInclude Include="..\..\Source\TPS\Public\EnemyAnim.h"/>
     <ClInclude Include="..\..\Source\TPS\Public\EnemyFSM.h"/>
     <ClInclude Include="..\..\Source\TPS\Public\EnemySpawn.h"/>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerBaseComp.h"/>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerFireComp.h"/>
+    <ClInclude Include="..\..\Source\TPS\Public\PlayerMoveComp.h"/>
     <ClInclude Include="..\..\Source\TPS\Public\SpawnManager.h"/>
     <ClInclude Include="..\..\Source\TPS\Public\TPS.h"/>
     <ClInclude Include="..\..\Source\TPS\Public\TPSGameModeBase.h"/>
