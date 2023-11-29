@@ -28,6 +28,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComp(class UInputComponent* PlayerInputComponent);
 
+	virtual void InitializeComponent() override;
 public:
 	//Owner가져오기
 	class ATPSPlayer* Me;

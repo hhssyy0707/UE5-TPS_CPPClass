@@ -16,6 +16,13 @@ void EmptyLinkFunctionForGeneratedCodeEnemyAnim() {}
 	TPS_API UEnum* Z_Construct_UEnum_TPS_EEnemyState();
 	UPackage* Z_Construct_UPackage__Script_TPS();
 // End Cross Module References
+	DEFINE_FUNCTION(UEnemyAnim::execAnimNotify_OnAttackHit)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AnimNotify_OnAttackHit();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UEnemyAnim::execAnimNotify_DieEnd)
 	{
 		P_FINISH;
@@ -54,6 +61,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemyAnim() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "AnimNotify_DamageEnd", &UEnemyAnim::execAnimNotify_DamageEnd },
 			{ "AnimNotify_DieEnd", &UEnemyAnim::execAnimNotify_DieEnd },
+			{ "AnimNotify_OnAttackHit", &UEnemyAnim::execAnimNotify_OnAttackHit },
 			{ "OnDamageEnd", &UEnemyAnim::execOnDamageEnd },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -99,6 +107,28 @@ void EmptyLinkFunctionForGeneratedCodeEnemyAnim() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UEnemyAnim_AnimNotify_DieEnd_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/EnemyAnim.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UEnemyAnim, nullptr, "AnimNotify_OnAttackHit", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics::Function_MetaDataParams), Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -193,6 +223,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemyAnim() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_UEnemyAnim_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_UEnemyAnim_AnimNotify_DamageEnd, "AnimNotify_DamageEnd" }, // 2541121318
 		{ &Z_Construct_UFunction_UEnemyAnim_AnimNotify_DieEnd, "AnimNotify_DieEnd" }, // 222182227
+		{ &Z_Construct_UFunction_UEnemyAnim_AnimNotify_OnAttackHit, "AnimNotify_OnAttackHit" }, // 3487333625
 		{ &Z_Construct_UFunction_UEnemyAnim_OnDamageEnd, "OnDamageEnd" }, // 2896440077
 		{ &Z_Construct_UFunction_UEnemyAnim_PlayMontageDamage, "PlayMontageDamage" }, // 3470461259
 	};
@@ -282,9 +313,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemyAnim() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UEnemyAnim, UEnemyAnim::StaticClass, TEXT("UEnemyAnim"), &Z_Registration_Info_UClass_UEnemyAnim, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UEnemyAnim), 1442968542U) },
+		{ Z_Construct_UClass_UEnemyAnim, UEnemyAnim::StaticClass, TEXT("UEnemyAnim"), &Z_Registration_Info_UClass_UEnemyAnim, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UEnemyAnim), 3594055231U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_3306514538(TEXT("/Script/TPS"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_1110102297(TEXT("/Script/TPS"),
 		Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -19,6 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_17_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_UE5_Projects_TPS_Source_TPS_Public_EnemyAnim_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execAnimNotify_OnAttackHit); \
 	DECLARE_FUNCTION(execAnimNotify_DieEnd); \
 	DECLARE_FUNCTION(execAnimNotify_DamageEnd); \
 	DECLARE_FUNCTION(execOnDamageEnd);

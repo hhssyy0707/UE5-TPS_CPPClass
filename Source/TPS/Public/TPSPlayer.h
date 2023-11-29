@@ -6,6 +6,18 @@
 #include "GameFramework/Character.h"
 #include "TPSPlayer.generated.h"
 
+//싱글캐스트
+DECLARE_DELEGATE(FInputSingleDelegate);
+DECLARE_DELEGATE_OneParam(FInputSingleParamDelegate,int32);
+//멀티캐스트
+DECLARE_MULTICAST_DELEGATE(FInputMultiDelegate);
+DECLARE_MULTICAST_DELEGATE_OneParam(FInputMultiParamDelegate, FVector);
+//블루프린트용 델리게이트 선언
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FIputDynamicMultiDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FIputDynamicMultiParamDelegate, FVector, dir);
+
+DECLARE_MULTICAST_DELEGATE_OneParam(FInputDelegate, class UInputComponent*);
+
 UCLASS()
 class TPS_API ATPSPlayer : public ACharacter
 {
@@ -14,6 +26,37 @@ class TPS_API ATPSPlayer : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ATPSPlayer();
+
+	//inline 함수
+	inline ATPSPlayer(int a) 
+	{	
+		//싱글 캐스트 함수 연결
+		OnSingleDelegate.BindUFunction(this, TEXT("AA"));
+		OnSingleDelegate.BindUObject(this, &ATPSPlayer::AA);
+
+		//싱글 캐스트 함수 호출
+		OnMultiDelegate.AddUObject(this, &ATPSPlayer::AA);
+		OnMultiDelegate.AddUObject(this, &ATPSPlayer::BB);
+		OnMultiDelegate.Broadcast();
+		//멀티 캐스트 함수 호출
+		OnDynamicMultiDelegate.AddDynamic(this, &ATPSPlayer::AA);
+		OnDynamicMultiDelegate.AddDynamic(this, &ATPSPlayer::AA);
+		OnDynamicMultiDelegate.Broadcast();
+
+		OnDynamicMultiParamDelegate.AddDynamic(this, &ATPSPlayer::GetDir);
+		FVector fff;
+		OnDynamicMultiParamDelegate.Broadcast(fff);
+	}
+	//void 함수같은 개념
+	void AA(){ }
+	void BB(){ }
+	void GetDir(FVector dir){}
+	FInputSingleDelegate OnSingleDelegate;
+	FInputMultiDelegate OnMultiDelegate;
+	FIputDynamicMultiDelegate OnDynamicMultiDelegate;
+	FIputDynamicMultiParamDelegate OnDynamicMultiParamDelegate;
+
+	FInputDelegate OnSetUpPlayerInputDelegate;
 
 protected:
 	// Called when the game starts or when spawned
@@ -133,5 +176,18 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	class UPlayerBaseComp* MoveComp;
+	
+	// 태어날때 HP를 MaxHP로 세팅
+	// 태어날때 HP UI를 생성해서 보이게 하고 싶다.
+	int MaxHP = 1000;
+	int CurrentHP;
+	
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UPlayerHPWidget> HPUIFac;
+	
+	//PlayerHPWidget에 기능을 넣고싶어서 따로 포인터 선언
+	UPROPERTY()
+	class UPlayerHPWidget* PlayerHPWidget;
 
+	void OnMyHit();
 };

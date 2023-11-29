@@ -16,6 +16,8 @@
 //#include "PlayerBaseComp.h"
 #include "PlayerFireComp.h"
 #include "PlayerMoveComp.h"
+#include "PlayerHPWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ATPSPlayer::ATPSPlayer()
@@ -90,6 +92,14 @@ void ATPSPlayer::BeginPlay()
 	//sniperUI->AddToViewport();//숫자 UI 순서
 
 	//ActionSetGrenadeGun();
+
+
+
+	//===================== UI 관련 ==============================
+	CurrentHP = MaxHP;
+	auto TempUI = CreateWidget<UPlayerHPWidget>(GetWorld(), HPUIFac);
+	TempUI->AddToViewport(1);
+	PlayerHPWidget = Cast<UPlayerHPWidget>(TempUI);
 }
 
 // Called every frame
@@ -134,8 +144,20 @@ void ATPSPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	//PlayerInputComponent->BindAction(TEXT("Run"), EInputEvent::IE_Pressed, this, &ATPSPlayer::ActionRun);
 	//PlayerInputComponent->BindAction(TEXT("Run"), EInputEvent::IE_Released, this, &ATPSPlayer::ActionWalk);
 
-	MoveComp->SetupPlayerInputComp(PlayerInputComponent);
-	FireComp->SetupPlayerInputComp(PlayerInputComponent);
+	//delegat로 대체 231128
+	//MoveComp->SetupPlayerInputComp(PlayerInputComponent);
+	//FireComp->SetupPlayerInputComp(PlayerInputComponent);
+	
+	//컴포넌트를 추가할때마다 콜해줄 필요없다 자동으로 등록됨
+	OnSetUpPlayerInputDelegate.Broadcast(PlayerInputComponent);
+}
+void ATPSPlayer::OnMyHit()
+{
+	CurrentHP-=100;
+	PlayerHPWidget->SetHPPercent(CurrentHP,MaxHP);
+	if ( CurrentHP <= 0 ) {
+		UGameplayStatics::SetGamePaused(GetWorld(), true);
+	}
 }
 //
 //void ATPSPlayer::AxisHorizontal(float value)

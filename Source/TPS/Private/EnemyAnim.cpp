@@ -3,6 +3,7 @@
 
 #include "EnemyAnim.h"
 #include "Enemy.h"
+#include "TPSPlayer.h"
 
 void UEnemyAnim::OnDamageEnd()
 {
@@ -37,6 +38,15 @@ void UEnemyAnim::AnimNotify_DieEnd()
 {
 	//죽는 애니메이션 끝남 -> True;
 	IsDieDone = true;
+}
+
+void UEnemyAnim::AnimNotify_OnAttackHit()
+{
+	// 플레이어를 찾아서 데미지를 입히고 싶다.
+	// 플레이어 -> OnMyHit();
+	auto character = GetWorld()->GetFirstPlayerController()->GetCharacter();
+	ATPSPlayer* Player = Cast<ATPSPlayer>(character);
+	Player->OnMyHit();
 }
 
 

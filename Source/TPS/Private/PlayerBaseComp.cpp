@@ -11,6 +11,9 @@ UPlayerBaseComp::UPlayerBaseComp()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
+	// call 순서를 바꾸기 위해 
+	//Call virtual InitializeComponent 
+	bWantsInitializeComponent = true;
 	// ...
 }
 
@@ -21,7 +24,9 @@ void UPlayerBaseComp::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	Me = Cast<ATPSPlayer>(GetOwner());
+	/*Me = Cast<ATPSPlayer>(GetOwner());
+
+	Me->OnSetUpPlayerInputDelegate.AddUObject(this, &UPlayerBaseComp::SetupPlayerInputComp);*/
 }
 
 
@@ -35,5 +40,17 @@ void UPlayerBaseComp::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 
 void UPlayerBaseComp::SetupPlayerInputComp(UInputComponent* PlayerInputComponent)
 {
+}
+
+void UPlayerBaseComp::InitializeComponent()
+{
+	Super::InitializeComponent();
+
+	// ...
+	//BeginPlay에 있던 코드 이동
+	Me = Cast<ATPSPlayer>(GetOwner());
+
+	Me->OnSetUpPlayerInputDelegate.AddUObject(this, &UPlayerBaseComp::SetupPlayerInputComp);
+
 }
 
